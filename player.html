@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Archive.org Audio Player</title>
+  <meta charset="UTF-8" />
+  <title>PanicStream Pop-Out Player</title>
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
   <style>
-    body { font-family: Arial; background: #222; color: #fff; margin: 0; padding: 20px; }
-    #player { margin: 20px 0; }
-    button { margin: 5px; }
-    input { width: 60%; }
+    body {
+      font-family: sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+    audio {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
-  <h2>Archive.org Pop-out Audio Player</h2>
-  <div id="player">
-    <audio id="audio" controls style="width:100%;">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
-  <div>
-    <input type="text" id="audioUrl" placeholder="Paste Archive.org audio URL here" />
-    <button onclick="loadAudio()">Load</button>
-  </div>
+  <div class="logo">🎧 Now Playing: WSP 4/27/2001 – Oak Mountain</div>
+
+  <audio id="player" controls>
+    <source src="https://archive.org/download/wsp2001-04-27.akg481.flac16/wsp2001-04-27d1t01.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
   <script>
-    function loadAudio() {
-      const url = document.getElementById('audioUrl').value;
-      document.getElementById('audio').src = url;
-      document.getElementById('audio').play();
-    }
-    // Optional: Auto-play first track if desired
-    // document.getElementById('audio').src = 'https://archive.org/download/your-audio.mp3';
+    const player = new Plyr('#player');
   </script>
 </body>
 </html>
